@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Add from "./Add.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
-import OwnedCards from "./OwnedCards.jsx";
+import OwnedCards from "./Card.jsx";
 import Compare from "./Compare.jsx";
 
 const router = createBrowserRouter([

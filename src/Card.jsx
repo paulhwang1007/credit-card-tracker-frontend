@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-const OwnedCards = () => {
+const Card = () => {
   const { id } = useParams();
 
   return (
@@ -11,4 +11,4 @@ const OwnedCards = () => {
   );
 };
 
-export default OwnedCards;
+export default Card;

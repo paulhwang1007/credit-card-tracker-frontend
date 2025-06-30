@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./App.css";
+import CreditCardList from "./CreditCardList";
 
 const App = () => {
   const sampleCards = [
@@ -30,6 +31,9 @@ const App = () => {
           </li>
         ))}
       </ul>
+
+      {/* Connecting to Backend */}
+      <CreditCardList />
     </div>
   );
 };
