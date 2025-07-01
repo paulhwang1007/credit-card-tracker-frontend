@@ -3,12 +3,6 @@ import "./App.css";
 import CreditCardList from "./CreditCardList";
 
 const App = () => {
-  const sampleCards = [
-    { id: 1, title: "Discover it" },
-    { id: 2, title: "Freedom Unlimited" },
-    { id: 3, title: "Bilt Mastercard" },
-  ];
-
   return (
     <div>
       {/* Add Page */}
@@ -21,18 +15,7 @@ const App = () => {
         <h2>Compare Page</h2>
       </Link>
 
-      {/* Credit Cards List */}
-      <ul>
-        {sampleCards.map((item) => (
-          <li key={item.id}>
-            <Link to={`/${item.id}`}>
-              <h2>{item.title}</h2>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/* Connecting to Backend */}
+      {/* Credit Card List */}
       <CreditCardList />
     </div>
   );

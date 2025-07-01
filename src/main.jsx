@@ -5,15 +5,15 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Add from "./Add.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
-import OwnedCards from "./Card.jsx";
 import Compare from "./Compare.jsx";
+import CreditCard from "./CreditCard.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/add", element: <Add /> },
   { path: "/compare", element: <Compare /> },
   { path: "*", element: <NotFoundPage /> },
-  { path: "/:id", element: <OwnedCards /> },
+  { path: "/:id", element: <CreditCard /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

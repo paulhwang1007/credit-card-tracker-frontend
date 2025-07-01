@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CreditCardList = () => {
   const [cards, setCards] = useState([]);
@@ -22,34 +23,13 @@ const CreditCardList = () => {
   return (
     <div>
       <h2>My Credit Cards</h2>
+
       <ul>
         {cards.map((card) => (
-          <li key={card.id} style={{ marginBottom: "1rem" }}>
-            <h3>{card.name}</h3>
-            <p>
-              <strong>Bank:</strong> {card.bank}
-            </p>
-            <p>
-              <strong>Annual Fee:</strong> ${card.annual_fee}
-            </p>
-            <p>
-              <strong>Opening Date:</strong> {card.opening_date}
-            </p>
-            <p>
-              <strong>Age:</strong> {card.age_years} years, {card.age_months}{" "}
-              months
-            </p>
-            <p>
-              <strong>Welcome Bonus:</strong> {card.welcome_bonus}
-            </p>
-            <p>
-              <strong>Multipliers:</strong>
-            </p>
-            <ul>
-              {card.multipliers.map((m, idx) => (
-                <li key={idx}>{m}</li>
-              ))}
-            </ul>
+          <li key={card.id}>
+            <Link to={`/${card.id}`}>
+              <h2>{card.name}</h2>
+            </Link>
           </li>
         ))}
       </ul>
