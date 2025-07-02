@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Add = () => {
   // Logic for Form
@@ -47,10 +48,12 @@ const Add = () => {
     setCardFields(initialCardFields);
   };
 
-  // Additional Logic for Multipliers
-
   return (
     <div>
+      <Link to={"/"}>
+        <h2>Home</h2>
+      </Link>
+
       <h2>Add Card</h2>
 
       <form onSubmit={handleSubmit}>
@@ -61,6 +64,7 @@ const Add = () => {
           value={cardFields.name}
           onChange={handleChange}
           placeholder="Card Name"
+          required
         />
         <h3>Bank: </h3>
         <input
@@ -68,6 +72,8 @@ const Add = () => {
           name="bank"
           value={cardFields.bank}
           onChange={handleChange}
+          placeholder="Bank"
+          required
         />
         <h3>Annual Fee: </h3>
         <input
@@ -75,6 +81,7 @@ const Add = () => {
           name="annual_fee"
           value={cardFields.annual_fee}
           onChange={handleChange}
+          required
         />
         <h3>Opening Date: </h3>
         <input
@@ -82,6 +89,7 @@ const Add = () => {
           name="opening_date"
           value={cardFields.opening_date}
           onChange={handleChange}
+          required
         />
         <h3>Welcome Bonus: </h3>
         <input
@@ -89,6 +97,8 @@ const Add = () => {
           name="welcome_bonus"
           value={cardFields.welcome_bonus}
           onChange={handleChange}
+          placeholder="Welcome Bonus"
+          required
         />
         <h3>Multipliers: </h3>
         <input
@@ -96,6 +106,8 @@ const Add = () => {
           name="multipliers"
           value={cardFields.multipliers}
           onChange={handleChange}
+          placeholder="Separate with ,"
+          required
         />
         <br />
         <br />
