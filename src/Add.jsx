@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 
 const Add = () => {
+  // Logic for Form
   const initialCardFields = {
     name: "",
     bank: "",
     annual_fee: 0,
     opening_date: "",
-    multipliers: [],
+    multipliers: "",
     welcome_bonus: "",
   };
 
@@ -21,9 +22,32 @@ const Add = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(cardFields);
+
+    // Convert Multipliers String into Array
+    const multipliersArray = cardFields.multipliers
+      .split(",")
+      .map((v) => v.trim())
+      .filter((v) => v.length > 0);
+
+    const cardInfo = {
+      ...cardFields,
+      multipliers: multipliersArray,
+    };
+
+    console.log(cardInfo);
+
+    fetch("http://localhost:8080/api/v1/credit_card", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(cardInfo),
+    }).then(() => {
+      console.log("New Card Added");
+    });
+
     setCardFields(initialCardFields);
   };
+
+  // Additional Logic for Multipliers
 
   return (
     <div>
