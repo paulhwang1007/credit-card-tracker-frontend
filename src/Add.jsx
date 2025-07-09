@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 const Add = () => {
   // Logic for Form
+
+  // Define initial values separately so that we can
+  // clear the fields after submitting by setting equal to these
   const initialCardFields = {
     name: "",
     bank: "",
@@ -14,6 +17,7 @@ const Add = () => {
 
   const [cardFields, setCardFields] = useState(initialCardFields);
 
+  // Runs in response to changes to a field
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCardFields((prev) => {
@@ -21,6 +25,7 @@ const Add = () => {
     });
   };
 
+  // Runs when the form is submitted
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -30,6 +35,7 @@ const Add = () => {
       .map((v) => v.trim())
       .filter((v) => v.length > 0);
 
+    // Store other fields with new array to send as body
     const cardInfo = {
       ...cardFields,
       multipliers: multipliersArray,
