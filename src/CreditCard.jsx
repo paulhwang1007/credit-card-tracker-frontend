@@ -16,6 +16,9 @@ const CreditCard = () => {
 
   return (
     <div>
+      <Link to={"/"}>
+        <h2>Home</h2>
+      </Link>
       <h2>Card Name: {card.name}</h2>
       <h2>Bank: {card.bank}</h2>
       <h2>Annual Fee: ${card.annual_fee}</h2>
