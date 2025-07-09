@@ -7,6 +7,7 @@ import Add from "./Add.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 import Compare from "./Compare.jsx";
 import CreditCard from "./CreditCard.jsx";
+import EditCard from "./EditCard.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
   { path: "/compare", element: <Compare /> },
   { path: "*", element: <NotFoundPage /> },
   { path: "/:id", element: <CreditCard /> },
+  { path: "/:id/edit", element: <EditCard /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

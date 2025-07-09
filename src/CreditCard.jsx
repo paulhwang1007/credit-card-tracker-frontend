@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CreditCard = () => {
   const { id } = useParams();
@@ -32,6 +32,10 @@ const CreditCard = () => {
           <li key={idx}>{multiplier}</li>
         ))}
       </ul>
+
+      <Link to={`/${id}/edit`}>
+        <h2>Edit Card</h2>
+      </Link>
     </div>
   );
 };
