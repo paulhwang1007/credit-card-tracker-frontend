@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import "./App.css";
 import CreditCardList from "./CreditCardList";
+import "./index.css";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
 
       {/* Compare Page */}
       <Link to={"/compare"}>
-        <h2>Compare Page</h2>
+        <h2 class="blue text-[30px]">Compare Page</h2>
       </Link>
 
       {/* Credit Card List */}
