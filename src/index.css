@@ -1,9 +1,29 @@
 @import "tailwindcss";
 
+/* Theme */
+@theme {
+  --color-primary: #a7d5b0;
+  --color-secondary: #367c43;
+  --color-accent: #58bd6b;
+  --color-custom-black: #060c07;
+  --color-custom-white: #e9f3eb;
+  --color-hover: #4a9958;
+}
+
 /* Base Styling */
-@layer base {
-  * {
-    font-family: sans-serif;
+
+/* Custom Components */
+@layer components {
+  .card-menu {
+    @apply rounded-lg shadow-xl hover:bg-hover;
+  }
+
+  .trash-can {
+    @apply rounded-md border-1 border-red-400 p-1 text-center text-sm transition-all shadow-sm 
+    hover:shadow-lg text-red-400 hover:text-white hover:bg-red-400 hover:border-slate-800 
+    focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 
+    active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 
+    disabled:shadow-none;
   }
 }
 
