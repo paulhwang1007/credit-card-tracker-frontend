@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
-@utility blue {
-  @apply text-blue-400;
+/* Base Styling */
+@layer base {
+  * {
+    font-family: sans-serif;
+  }
+}
+
+/* Custom Utility Classes */
+@utility item-spacing {
+  @apply px-2 py-1 my-1;
 }

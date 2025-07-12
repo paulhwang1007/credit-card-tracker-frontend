@@ -43,23 +43,25 @@ const CreditCardList = () => {
   };
 
   return (
-    <div>
-      <h2>My Credit Cards</h2>
-
+    <div class="flex-1 flex flex-col justify-between items-start border-2 border-red-400">
       <ul>
         {cards.map((card) => (
-          <li key={card.id}>
-            <Link to={`/${card.id}`}>
-              <h2>{card.name}</h2>
-            </Link>
+          <div class="flex justify-between item-spacing">
+            <li key={card.id}>
+              <Link to={`/${card.id}`}>
+                <p class="text-xl">{card.name}</p>
+              </Link>
+            </li>
             {showDelete && (
               <button onClick={() => handleDelete(card.id)}>Delete</button>
             )}
-          </li>
+          </div>
         ))}
       </ul>
 
-      <button onClick={toggleDelete}>{showDelete ? "Hide" : "Delete"}</button>
+      <button class="item-spacing text-xl" onClick={toggleDelete}>
+        {showDelete ? "Hide" : "Delete"}
+      </button>
     </div>
   );
 };
