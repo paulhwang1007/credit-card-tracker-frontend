@@ -2,23 +2,41 @@
 
 /* Theme */
 @theme {
-  --color-primary: #a7d5b0;
-  --color-secondary: #367c43;
-  --color-accent: #58bd6b;
-  --color-custom-black: #060c07;
-  --color-custom-white: #e9f3eb;
-  --color-hover: #4a9958;
+  --color-primary: #a1bdce;
+  --color-primary-hover: #8fb1c7;
+  --color-secondary: #363668;
+  --color-secondary-hover: #4b4b87;
+  --color-accent: #7c72b6;
+  --color-accent-hover: #9388c7;
+  --color-custom-black: #0e1418;
+  --color-custom-white: #e4ecf1;
 }
 
 /* Base Styling */
 
 /* Custom Components */
 @layer components {
-  .card-menu {
-    @apply rounded-lg shadow-xl hover:bg-hover;
+  .primary-button {
+    @apply px-4 py-2 bg-primary text-custom-black rounded hover:bg-primary-hover;
   }
 
-  .trash-can {
+  .secondary-button {
+    @apply px-4 py-2 bg-secondary text-custom-white rounded hover:bg-secondary-hover;
+  }
+
+  .accent-button {
+    @apply px-4 py-2 bg-accent text-custom-black rounded hover:bg-accent-hover;
+  }
+
+  .menu-item {
+    @apply text-xl font-semibold px-2 py-1 mx-3 my-1 hover:text-primary;
+  }
+
+  .card-menu {
+    @apply text-xl px-2 py-1 mx-3 my-1 hover:text-accent;
+  }
+
+  .trash-can-icon {
     @apply rounded-md border-1 border-red-400 p-1 text-center text-sm transition-all shadow-sm 
     hover:shadow-lg text-red-400 hover:text-white hover:bg-red-400 hover:border-slate-800 
     focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 
@@ -28,6 +46,3 @@
 }
 
 /* Custom Utility Classes */
-@utility item-spacing {
-  @apply px-2 py-1 my-1;
-}

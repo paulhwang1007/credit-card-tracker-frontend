@@ -56,27 +56,23 @@ const CreditCardList = () => {
 
   return (
     <>
-      <div class="flex-1 flex flex-col justify-between items-start border-2 border-red-400">
+      <div class="flex-1 flex flex-col justify-between items-start">
         <ul class="w-full">
+          <h2>Cards</h2>
           {cards.map((card) => (
             <li
-              class="flex justify-between items-center item-spacing"
+              class="flex justify-between items-center card-menu"
               key={card.id}
             >
               <Link to={`/${card.id}`}>
-                <p class="text-xl">{card.name}</p>
+                <p>{card.name}</p>
               </Link>
 
-              {/* {showDelete && (
-              <button onClick={() => handleDelete(card.id)}>Delete</button>
-            )} */}
-
               <button
-                // onClick={() => handleDelete(card.id)}
                 onClick={() => requestDelete(card.id)}
                 className={`${
                   showDelete
-                    ? "visible opacity-100 trash-can"
+                    ? "visible opacity-100 trash-can-icon"
                     : "invisible opacity-0"
                 } transition-opacity duration-200 ml-4`}
               >
@@ -86,7 +82,7 @@ const CreditCardList = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="w-4.5 h-4.5"
+                  className="w-4 h-4"
                 >
                   <path
                     strokeLinecap="round"
@@ -99,7 +95,7 @@ const CreditCardList = () => {
           ))}
         </ul>
 
-        <button class="item-spacing text-xl" onClick={toggleDelete}>
+        <button class="text-xl menu-item" onClick={toggleDelete}>
           {showDelete ? "Hide" : "Delete"}
         </button>
       </div>
