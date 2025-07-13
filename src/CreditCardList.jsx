@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 
 const CreditCardList = () => {
   const [cards, setCards] = useState([]);
@@ -62,13 +63,18 @@ const CreditCardList = () => {
 
   return (
     <>
-      <div class="flex-1 flex flex-col justify-between items-start">
-        <ul class="w-full">
-          <div class="px-2 py-1 mx-3 my-1">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Cards</AccordionTrigger>
-                <AccordionContent>
+      <ul class="w-full">
+        <div class="px-2 py-1 mx-3 my-1">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                <div class="flex items-center cursor-pointer">
+                  <CreditCardIcon />
+                  <p class="px-1 mx-2">My Cards</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div class="flex flex-col">
                   {cards.map((card) => (
                     <li
                       class="flex justify-between items-center card-menu"
@@ -82,7 +88,7 @@ const CreditCardList = () => {
                         onClick={() => requestDelete(card.id)}
                         className={`${
                           showDelete
-                            ? "visible opacity-100 trash-can-icon"
+                            ? "visible opacity-100 trash-can-icon cursor-pointer"
                             : "invisible opacity-0"
                         } transition-opacity duration-200 ml-4`}
                       >
@@ -103,16 +109,19 @@ const CreditCardList = () => {
                       </button>
                     </li>
                   ))}
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </ul>
 
-        <button class="text-xl menu-item" onClick={toggleDelete}>
-          {showDelete ? "Hide" : "Delete"}
-        </button>
-      </div>
+                  <button
+                    class="text-xl menu-item self-end cursor-pointer"
+                    onClick={toggleDelete}
+                  >
+                    {showDelete ? "Hide" : "Delete"}
+                  </button>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </ul>
 
       {/* Custom confirmation dialog */}
       <ConfirmDelete

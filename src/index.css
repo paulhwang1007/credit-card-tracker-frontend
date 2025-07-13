@@ -29,11 +29,11 @@
   }
 
   .menu-item {
-    @apply text-xl font-semibold px-2 py-1 mx-3 my-1 hover:text-primary;
+    @apply text-xl font-semibold px-1 py-1 mx-2 my-2 hover:text-primary;
   }
 
   .card-menu {
-    @apply text-xl px-2 py-1 mx-3 my-1 hover:text-accent;
+    @apply text-xl py-1 ml-10 mr-2 hover:text-accent;
   }
 
   .trash-can-icon {
