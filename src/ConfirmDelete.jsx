@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 
 const ConfirmDelete = ({ open, onClose, onConfirm }) => {
   if (!open) return null;

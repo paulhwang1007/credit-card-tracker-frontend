@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ConfirmDelete from "./ConfirmDelete";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const CreditCardList = () => {
   const [cards, setCards] = useState([]);
@@ -58,41 +64,49 @@ const CreditCardList = () => {
     <>
       <div class="flex-1 flex flex-col justify-between items-start">
         <ul class="w-full">
-          <h2>Cards</h2>
-          {cards.map((card) => (
-            <li
-              class="flex justify-between items-center card-menu"
-              key={card.id}
-            >
-              <Link to={`/${card.id}`}>
-                <p>{card.name}</p>
-              </Link>
+          <div class="px-2 py-1 mx-3 my-1">
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Cards</AccordionTrigger>
+                <AccordionContent>
+                  {cards.map((card) => (
+                    <li
+                      class="flex justify-between items-center card-menu"
+                      key={card.id}
+                    >
+                      <Link to={`/${card.id}`}>
+                        <p>{card.name}</p>
+                      </Link>
 
-              <button
-                onClick={() => requestDelete(card.id)}
-                className={`${
-                  showDelete
-                    ? "visible opacity-100 trash-can-icon"
-                    : "invisible opacity-0"
-                } transition-opacity duration-200 ml-4`}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-4 h-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 7.5V19.5A1.5 1.5 0 007.5 21h9a1.5 1.5 0 001.5-1.5V7.5m-13.5 0h15m-10.5 0V4.5A1.5 1.5 0 0110.5 3h3a1.5 1.5 0 011.5 1.5V7.5"
-                  />
-                </svg>
-              </button>
-            </li>
-          ))}
+                      <button
+                        onClick={() => requestDelete(card.id)}
+                        className={`${
+                          showDelete
+                            ? "visible opacity-100 trash-can-icon"
+                            : "invisible opacity-0"
+                        } transition-opacity duration-200 ml-4`}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={2}
+                          stroke="currentColor"
+                          className="w-4 h-4"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 7.5V19.5A1.5 1.5 0 007.5 21h9a1.5 1.5 0 001.5-1.5V7.5m-13.5 0h15m-10.5 0V4.5A1.5 1.5 0 0110.5 3h3a1.5 1.5 0 011.5 1.5V7.5"
+                          />
+                        </svg>
+                      </button>
+                    </li>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
         </ul>
 
         <button class="text-xl menu-item" onClick={toggleDelete}>
