@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import LeftMenu from "./LeftMenu";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 const Add = () => {
   // Logic for Form
@@ -59,69 +61,100 @@ const Add = () => {
     <div class="flex bg-custom-black text-custom-white font-sans-serif">
       <LeftMenu />
 
-      <Link to={"/"}>
-        <h2>Home</h2>
-      </Link>
+      <div class="flex flex-col w-3/4 px-12 py-8">
+        <h2 class="text-3xl font-semibold mb-8">Add New Card</h2>
 
-      <h2>Add Card</h2>
+        <form onSubmit={handleSubmit} class="flex flex-col px-24 text-xl">
+          <div class="add-card-field">
+            <h3>Name: </h3>
+            <Input
+              type="text"
+              name="name"
+              value={cardFields.name}
+              onChange={handleChange}
+              placeholder="Card Name"
+              required
+            />
+          </div>
 
-      <form onSubmit={handleSubmit}>
-        <h3>Name: </h3>
-        <input
-          type="text"
-          name="name"
-          value={cardFields.name}
-          onChange={handleChange}
-          placeholder="Card Name"
-          required
-        />
-        <h3>Bank: </h3>
-        <input
-          type="text"
-          name="bank"
-          value={cardFields.bank}
-          onChange={handleChange}
-          placeholder="Bank"
-          required
-        />
-        <h3>Annual Fee: </h3>
-        <input
-          type="number"
-          name="annual_fee"
-          value={cardFields.annual_fee}
-          onChange={handleChange}
-          required
-        />
-        <h3>Opening Date: </h3>
-        <input
-          type="date"
-          name="opening_date"
-          value={cardFields.opening_date}
-          onChange={handleChange}
-          required
-        />
-        <h3>Welcome Bonus: </h3>
-        <input
-          type="text"
-          name="welcome_bonus"
-          value={cardFields.welcome_bonus}
-          onChange={handleChange}
-          placeholder="Welcome Bonus"
-          required
-        />
-        <h3>Multipliers: </h3>
-        <input
-          type="text"
-          name="multipliers"
-          value={cardFields.multipliers}
-          onChange={handleChange}
-          placeholder="Separate with ,"
-          required
-        />
-        <br />
-        <br />
-        <button type="submit">Add Card</button>
-      </form>
+          <div class="add-card-field">
+            <h3>Bank: </h3>
+            <Input
+              type="text"
+              name="bank"
+              value={cardFields.bank}
+              onChange={handleChange}
+              placeholder="Bank"
+              required
+            />
+          </div>
+
+          <div class="add-card-field">
+            <h3>Annual Fee: </h3>
+            <Input
+              type="number"
+              name="annual_fee"
+              value={cardFields.annual_fee}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div class="add-card-field">
+            <h3>Opening Date: </h3>
+            <Input
+              type="date"
+              name="opening_date"
+              value={cardFields.opening_date}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div class="add-card-field">
+            <div class="w-1/3">
+              <h3>Welcome Bonus: </h3>
+              <p class="text-sm text-primary my-1">
+                What is your offered sign-up bonus, if any?
+              </p>
+            </div>
+            <Textarea
+              type="text"
+              name="welcome_bonus"
+              value={cardFields.welcome_bonus}
+              onChange={handleChange}
+              placeholder="Welcome Bonus"
+              required
+            />
+          </div>
+
+          <div class="add-card-field">
+            <div class="w-1/3">
+              <h3>Multipliers/Benefits: </h3>
+              <p class="text-sm text-primary my-1">
+                Separate each multiplier or benefit with a comma
+              </p>
+            </div>
+            <Textarea
+              type="text"
+              name="multipliers"
+              value={cardFields.multipliers}
+              onChange={handleChange}
+              placeholder="Multipliers"
+              required
+            />
+          </div>
+
+          <br />
+          <br />
+          <button
+            type="submit"
+            class="self-end px-4 py-2 rounded-xl bg-primary hover:bg-primary-hover text-custom-black cursor-pointer"
+          >
+            Add Card
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

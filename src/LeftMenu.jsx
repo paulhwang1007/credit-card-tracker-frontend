@@ -6,7 +6,7 @@ import CompareIcon from "@mui/icons-material/Compare";
 
 const LeftMenu = () => {
   return (
-    <div class="box-border h-screen w-1/4 px-4 py-4 flex flex-col border-r-1 border-primary bg-[#121e28]">
+    <div class="box-border h-screen w-1/4 p-4 flex flex-col border-r-1 border-primary bg-[#121e28]">
       {/* Home Page */}
       <Link to={"/"}>
         <div class="flex items-center px-2 mx-3 hover:text-primary-hover">
