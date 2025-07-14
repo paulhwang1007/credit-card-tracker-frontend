@@ -40,6 +40,10 @@
     @apply flex justify-between align-top my-4;
   }
 
+  .table-header {
+    @apply text-base font-medium text-primary;
+  }
+
   .trash-can-icon {
     @apply rounded-md border-1 border-red-400 p-1 text-center text-sm transition-all shadow-sm 
     hover:shadow-lg text-red-400 hover:text-white hover:bg-red-400 hover:border-slate-800 

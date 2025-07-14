@@ -61,7 +61,7 @@ const Add = () => {
     <div class="flex bg-custom-black text-custom-white font-sans-serif">
       <LeftMenu />
 
-      <div class="flex flex-col w-3/4 px-12 py-8">
+      <div class="flex-1 flex-col px-12 py-8 mx-4 mt-8">
         <h2 class="text-3xl font-semibold mb-8">Add New Card</h2>
 
         <form onSubmit={handleSubmit} class="flex flex-col px-24 text-xl">
@@ -145,7 +145,6 @@ const Add = () => {
             />
           </div>
 
-          <br />
           <br />
           <button
             type="submit"
