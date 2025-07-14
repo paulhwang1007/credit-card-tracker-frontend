@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CardDetails from "./CardDetails";
+import LeftMenu from "./LeftMenu";
 
 const Compare = () => {
   const [cards, setCards] = useState([]);
@@ -17,7 +18,9 @@ const Compare = () => {
   }, []);
 
   return (
-    <div>
+    <div class="flex bg-custom-black text-custom-white font-sans-serif">
+      <LeftMenu />
+
       {/* Link to Home Page */}
       <Link to={"/"}>
         <h2>Home</h2>

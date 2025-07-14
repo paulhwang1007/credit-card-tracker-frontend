@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LeftMenu from "./LeftMenu";
 
 const Add = () => {
   // Logic for Form
@@ -55,7 +56,9 @@ const Add = () => {
   };
 
   return (
-    <div>
+    <div class="flex bg-custom-black text-custom-white font-sans-serif">
+      <LeftMenu />
+
       <Link to={"/"}>
         <h2>Home</h2>
       </Link>
