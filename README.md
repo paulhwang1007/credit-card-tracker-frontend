@@ -1,4 +1,4 @@
-# 💳 Personal Credit Card Manager
+# 💳 Personal Credit Card Manager - Frontend
 
 A full-stack CRUD application to manage your personal wallet of credit cards. Easily **add**, **view**, **edit**, **delete**, and **compare** cards to optimize your financial strategy.
 
