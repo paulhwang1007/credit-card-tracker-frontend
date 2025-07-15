@@ -29,8 +29,8 @@ const Compare = () => {
       <LeftMenu />
 
       {/* Title */}
-      <div class="flex-1 flex-col px-12 py-8 mx-4 mt-8">
-        <h2 class="text-3xl font-semibold mb-8">Compare Credit Cards</h2>
+      <div class="body-spacing">
+        <h2 class="page-header">Compare Credit Cards</h2>
 
         <div class="flex justify-between">
           {/* First Card */}

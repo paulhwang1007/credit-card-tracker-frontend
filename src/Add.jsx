@@ -61,8 +61,8 @@ const Add = () => {
     <div class="flex bg-custom-black text-custom-white font-sans-serif">
       <LeftMenu />
 
-      <div class="flex-1 flex-col px-12 py-8 mx-4 mt-8">
-        <h2 class="text-3xl font-semibold mb-8">Add New Card</h2>
+      <div class="body-spacing">
+        <h2 class="page-header">Add New Card</h2>
 
         <form onSubmit={handleSubmit} class="flex flex-col px-24 text-xl">
           <div class="add-card-field">

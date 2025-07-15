@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import LeftMenu from "./LeftMenu";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 const CreditCard = () => {
   const { id } = useParams();
@@ -19,29 +28,49 @@ const CreditCard = () => {
     <div class="flex bg-custom-black text-custom-white font-sans-serif">
       <LeftMenu />
 
-      <Link to={"/"}>
-        <h2>Home</h2>
-      </Link>
-      <h2>Card Name: {card.name}</h2>
-      <h2>Bank: {card.bank}</h2>
-      <h2>Annual Fee: ${card.annual_fee}</h2>
-      <h2>Opening Date: {card.opening_date}</h2>
-      <h2>
-        Account Age: {card.age_years} years, {card.age_months} months
-      </h2>
-      <h2>Welcome Bonus: </h2>
-      <h3>{card.welcome_bonus}</h3>
+      <div class="body-spacing">
+        <h2 class="page-header">Card: {card.name}</h2>
 
-      <h2>Multipliers: </h2>
-      <ul>
-        {card.multipliers.map((multiplier, idx) => (
-          <li key={idx}>{multiplier}</li>
-        ))}
-      </ul>
-
-      <Link to={`/${id}/edit`}>
-        <h2>Edit Card</h2>
-      </Link>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell class="table-header">Bank</TableCell>
+              <TableCell>{card.bank}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="table-header">Annual Fee</TableCell>
+              <TableCell>{card.annual_fee}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="table-header">Opening Date</TableCell>
+              <TableCell>{card.opening_date}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="table-header">Account Age</TableCell>
+              <TableCell>
+                {card.age_years} years, {card.age_months} months
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell class="table-header">Welcome Bonus</TableCell>
+              <TableCell>{card.welcome_bonus}</TableCell>
+            </TableRow>
+            {card.multipliers.map((multiplier, index) => (
+              <TableRow key={index}>
+                {index === 0 && (
+                  <TableCell
+                    rowSpan={card.multipliers.length}
+                    class="table-header"
+                  >
+                    Multipliers
+                  </TableCell>
+                )}
+                <TableCell>{multiplier}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };
