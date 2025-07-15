@@ -1,12 +1,41 @@
-# React + Vite
+# 💳 Personal Credit Card Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack CRUD application to manage your personal wallet of credit cards. Easily **add**, **view**, **edit**, **delete**, and **compare** cards to optimize your financial strategy.
 
-Currently, two official plugins are available:
+## 🛠 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📝 Add new credit cards with details like bank, fee, opening date, welcome bonus, and benefits
+- 📋 View a list of all your current credit cards
+- 🧮 Compare two cards side-by-side to make optimization easier
+- ✏️ Edit credit card information
+- 🗑️ Delete cards with confirmation prompts
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧑‍🎨 Frontend
+
+Built with:
+
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.dev/) – for clean, accessible UI components
+- [Material UI Icons (MUI)](https://mui.com/material-ui/material-icons/) – for consistent and elegant icons
+- [React Router](https://reactrouter.com/) – for client-side routing and page navigation
+
+## ⚙️ Backend
+
+Powered by:
+
+- [Spring Boot](https://spring.io/projects/spring-boot)
+- RESTful API design
+- CRUD endpoints for managing credit card data
+- CORS configured for React frontend communication
+
+---
+
+## 🗃️ Database
+
+- **PostgreSQL** as the relational database
+- **Docker** used to containerize the database for easy local development and deployment
+
+Built by Paul Hwang
