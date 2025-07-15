@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const EditCard = () => {
+  const [multiplierInput, setMultiplierInput] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
   const [card, setCard] = useState({
@@ -19,7 +20,10 @@ const EditCard = () => {
   useEffect(() => {
     fetch(`http://localhost:8080/api/v1/credit_card/${id}`)
       .then((res) => res.json())
-      .then((data) => setCard(data))
+      .then((data) => {
+        setCard(data);
+        setMultiplierInput(data.multipliers.join(", "));
+      })
       .catch((err) => console.error("Failed to load card: ", err));
   }, [id]);
 
@@ -32,24 +36,24 @@ const EditCard = () => {
     }));
   };
 
-  // handleChange for Multipliers
-  const handleMultipliersChange = (e) => {
-    setCard((prev) => ({
-      ...prev,
-      multipliers: e.target.value.split(",").map((s) => s.trim()),
-    }));
-  };
-
   // Submit Updated Data
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const cardToSubmit = {
+      ...card,
+      multipliers: multiplierInput
+        .split(",")
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0),
+    };
 
     fetch(`http://localhost:8080/api/v1/credit_card/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(card),
+      body: JSON.stringify(cardToSubmit),
     })
       .then((res) => {
         if (res.ok) {
@@ -116,8 +120,8 @@ const EditCard = () => {
           <label class="add-card-field">
             <h2>Multipliers</h2>
             <Textarea
-              value={card.multipliers.join(", ")}
-              onChange={handleMultipliersChange}
+              value={multiplierInput}
+              onChange={(e) => setMultiplierInput(e.target.value)}
             />
           </label>
           <br />
