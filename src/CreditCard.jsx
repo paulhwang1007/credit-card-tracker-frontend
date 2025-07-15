@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import EditCard from "./EditCard";
 
 const CreditCard = () => {
   const { id } = useParams();
@@ -28,8 +29,16 @@ const CreditCard = () => {
     <div class="flex bg-custom-black text-custom-white font-sans-serif">
       <LeftMenu />
 
-      <div class="body-spacing">
-        <h2 class="page-header">Card: {card.name}</h2>
+      <div class="flex flex-col body-spacing">
+        <div class="flex flex-col justify-center items-center">
+          <h2 class="text-3xl font-semibold mb-4">Card: {card.name}</h2>
+
+          <Link to={`/${id}/edit`}>
+            <button class="px-2 py-1 bg-primary text-custom-black rounded hover:bg-primary-hover cursor-pointer">
+              Edit Card
+            </button>
+          </Link>
+        </div>
 
         <Table>
           <TableBody>
