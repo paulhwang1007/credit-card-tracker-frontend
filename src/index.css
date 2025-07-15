@@ -17,7 +17,7 @@
 /* Custom Components */
 @layer components {
   .primary-button {
-    @apply px-4 py-2 bg-primary text-custom-black rounded hover:bg-primary-hover;
+    @apply px-4 py-2 bg-primary text-custom-black rounded hover:bg-primary-hover cursor-pointer;
   }
 
   .secondary-button {
@@ -25,7 +25,7 @@
   }
 
   .accent-button {
-    @apply px-4 py-2 bg-accent text-custom-black rounded hover:bg-accent-hover;
+    @apply px-4 py-2 bg-accent text-custom-white rounded hover:bg-accent-hover;
   }
 
   .menu-item {
