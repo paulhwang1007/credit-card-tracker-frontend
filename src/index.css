@@ -2,69 +2,76 @@
 
 /* Theme */
 @theme {
-  --color-primary: #a1bdce;
-  --color-primary-hover: #8fb1c7;
-  --color-secondary: #363668;
-  --color-secondary-hover: #4b4b87;
-  --color-accent: #7c72b6;
-  --color-accent-hover: #9388c7;
-  --color-custom-black: #0e1418;
-  --color-custom-white: #e4ecf1;
+  --color-background: #0f172a; /* Slate 900 */
+  --color-surface: #1e293b; /* Slate 800 */
+  --color-surface-hover: #334155; /* Slate 700 */
+  
+  --color-primary: #38bdf8; /* Sky 400 */
+  --color-primary-hover: #0ea5e9; /* Sky 500 */
+  
+  --color-secondary: #818cf8; /* Indigo 400 */
+  --color-secondary-hover: #6366f1; /* Indigo 500 */
+  
+  --color-accent: #2dd4bf; /* Teal 400 */
+  
+  --color-text-main: #f1f5f9; /* Slate 100 */
+  --color-text-muted: #94a3b8; /* Slate 400 */
+  
+  --color-danger: #ef4444; /* Red 500 */
 }
 
 /* Base Styling */
+@layer base {
+  body {
+    @apply bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-background;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
 
 /* Custom Components */
 @layer components {
-  .primary-button {
-    @apply px-4 py-2 bg-primary text-custom-black rounded hover:bg-primary-hover cursor-pointer;
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-background hover:bg-primary-hover shadow-lg shadow-primary/20;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface text-text-main hover:bg-surface-hover border border-slate-700;
+  }
+  
+  .btn-danger {
+    @apply bg-danger/10 text-danger hover:bg-danger/20 border border-danger/20;
   }
 
-  .secondary-button {
-    @apply px-4 py-2 bg-secondary text-custom-white rounded hover:bg-secondary-hover;
+  .input-field {
+    @apply flex h-10 w-full rounded-lg border border-slate-700 bg-surface px-3 py-2 text-sm text-text-main placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all;
   }
 
-  .accent-button {
-    @apply px-4 py-2 bg-accent text-custom-white rounded hover:bg-accent-hover;
+  .card {
+     @apply bg-surface rounded-2xl border border-slate-700/50 shadow-xl;
+  }
+  
+  .page-container {
+    @apply flex min-h-screen bg-background;
+  }
+  
+  .content-area {
+    @apply flex-1 p-8 overflow-y-auto;
   }
 
-  .menu-item {
-    @apply text-xl font-semibold px-1 py-1 mx-2 my-2 hover:text-primary;
-  }
-
-  .card-menu {
-    @apply text-xl py-1 ml-10 mr-2 hover:text-accent;
-  }
-
-  .add-card-field {
-    @apply flex justify-between align-top my-4;
-  }
-
-  .table-header {
-    @apply text-base font-medium text-primary;
-  }
-
-  .page-header {
-    @apply text-3xl font-semibold mb-8;
-  }
-
-  .body-spacing {
-    @apply flex-1 flex-col px-12 py-8 mx-4 mt-8;
-  }
-
-  .trash-can-icon {
-    @apply rounded-md border-1 border-red-400 p-1 text-center text-sm transition-all shadow-sm 
-    hover:shadow-lg text-red-400 hover:text-white hover:bg-red-400 hover:border-slate-800 
-    focus:text-white focus:bg-slate-800 focus:border-slate-800 active:border-slate-800 
-    active:text-white active:bg-slate-800 disabled:pointer-events-none disabled:opacity-50 
-    disabled:shadow-none;
+  .glass-panel {
+    @apply bg-surface/80 backdrop-blur-md border border-slate-700/50;
   }
 }
 
 /* Custom Utility Classes */
-
-/* Regular CSS */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
+  filter: invert(1);
+  cursor: pointer;
 }
