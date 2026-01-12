@@ -1,21 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import CreditCardList from "./CreditCardList";
 
 const HomePage = () => {
   return (
-    <div class="flex flex-1 flex-col justify-center items-center gap-4">
-      <h1 class="text-5xl text-primary">Keep Track of Your Credit Cards</h1>
-      <h2 class="text-xl text-custom-white">
-        Create, Read, Update, and Delete Credit Cards in your Wallet
-      </h2>
-      <div class="flex gap-4 mt-2">
-        <Link to={"/add"}>
-          <button class="primary-button">Add Card</button>
-        </Link>
-        <Link to={"/compare"}>
-          <button class="primary-button">Compare Cards</button>
-        </Link>
+    <div className="content-area">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold text-white">Dashboard</h1>
+          <p className="text-text-muted mt-1">Manage your cards and benefits</p>
+        </div>
+        {/* Optional: Add button here if desired, but it's in the sidebar/grid too */}
       </div>
+
+      <CreditCardList />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import LeftMenu from "./LeftMenu";
+import Sidebar from "./Sidebar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -27,7 +27,6 @@ const EditCard = () => {
       .catch((err) => console.error("Failed to load card: ", err));
   }, [id]);
 
-  // Handle Field Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCard((prev) => ({
@@ -36,7 +35,6 @@ const EditCard = () => {
     }));
   };
 
-  // Submit Updated Data
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -66,70 +64,83 @@ const EditCard = () => {
   };
 
   return (
-    <div class="flex bg-custom-black text-custom-white font-sans-serif">
-      <LeftMenu />
+    <div className="page-container">
+      <Sidebar />
 
-      <div class="body-spacing">
-        <h2 class="page-header">Edit Card</h2>
+      <div className="content-area flex justify-center">
+        <div className="w-full max-w-2xl">
+            <h2 className="text-3xl font-bold mb-8">Edit Card</h2>
 
-        <form onSubmit={handleSubmit} class="flex flex-col px-24 text-xl">
-          <label class="add-card-field">
-            <h2>Name</h2>
-            <Input name="name" value={card.name} onChange={handleChange} />
-          </label>
-          <br />
+            <form onSubmit={handleSubmit} className="bg-surface p-8 rounded-2xl border border-slate-700/50 shadow-xl space-y-6">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-text-muted">Name</label>
+                        <Input name="name" value={card.name} onChange={handleChange} className="input-field" />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-text-muted">Bank</label>
+                        <Input name="bank" value={card.bank} onChange={handleChange} className="input-field" />
+                    </div>
+                </div>
 
-          <label class="add-card-field">
-            <h2>Bank</h2>
-            <Input name="bank" value={card.bank} onChange={handleChange} />
-          </label>
-          <br />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                         <label className="text-sm font-medium text-text-muted">Annual Fee</label>
+                        <Input
+                        type="number"
+                        name="annual_fee"
+                        value={card.annual_fee}
+                        onChange={handleChange}
+                        className="input-field"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <label className="text-sm font-medium text-text-muted">Opening Date</label>
+                        <Input
+                        type="date"
+                        name="opening_date"
+                        value={card.opening_date}
+                        onChange={handleChange}
+                        className="input-field block w-full"
+                        />
+                    </div>
+                </div>
 
-          <label class="add-card-field">
-            <h2>Annual Fee</h2>
-            <Input
-              type="number"
-              name="annual_fee"
-              value={card.annual_fee}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
+                <div className="space-y-2">
+                    <label className="text-sm font-medium text-text-muted">Welcome Bonus</label>
+                    <Textarea
+                    name="welcome_bonus"
+                    value={card.welcome_bonus}
+                    onChange={handleChange}
+                    className="bg-background border-slate-700 min-h-[80px]"
+                    />
+                </div>
 
-          <label class="add-card-field">
-            <h2>Opening Date</h2>
-            <Input
-              type="date"
-              name="opening_date"
-              value={card.opening_date}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
+                <div className="space-y-2">
+                    <label className="text-sm font-medium text-text-muted">Multipliers</label>
+                    <p className="text-xs text-slate-500">Comma separated</p>
+                    <Textarea
+                    value={multiplierInput}
+                    onChange={(e) => setMultiplierInput(e.target.value)}
+                    className="bg-background border-slate-700 min-h-[80px]"
+                    />
+                </div>
 
-          <label class="add-card-field">
-            <h2>Welcome Bonus</h2>
-            <Textarea
-              name="welcome_bonus"
-              value={card.welcome_bonus}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-
-          <label class="add-card-field">
-            <h2>Multipliers</h2>
-            <Textarea
-              value={multiplierInput}
-              onChange={(e) => setMultiplierInput(e.target.value)}
-            />
-          </label>
-          <br />
-
-          <button type="submit" class="primary-button self-end">
-            Update Card
-          </button>
-        </form>
+                <div className="pt-4 flex justify-end gap-4">
+                    <button 
+                        type="button" 
+                        onClick={() => navigate(`/${id}`)}
+                        className="btn btn-secondary"
+                    >
+                        Cancel
+                    </button>
+                    <button type="submit" className="btn btn-primary px-8">
+                        Update Card
+                    </button>
+                </div>
+            </form>
+        </div>
       </div>
     </div>
   );

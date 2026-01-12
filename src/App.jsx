@@ -1,11 +1,10 @@
 import HomePage from "./HomePage";
-import "./index.css";
-import LeftMenu from "./LeftMenu";
+import Sidebar from "./Sidebar";
 
 const App = () => {
   return (
-    <div class="flex bg-custom-black text-custom-white font-sans-serif">
-      <LeftMenu />
+    <div className="page-container">
+      <Sidebar />
       <HomePage />
     </div>
   );

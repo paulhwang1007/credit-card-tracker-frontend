@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import CardDetails from "./CardDetails";
-import LeftMenu from "./LeftMenu";
+import Sidebar from "./Sidebar";
 import {
   Select,
   SelectContent,
@@ -25,35 +24,28 @@ const Compare = () => {
   }, []);
 
   return (
-    <div class="flex bg-custom-black text-custom-white font-sans-serif">
-      <LeftMenu />
+    <div className="page-container">
+      <Sidebar />
 
-      {/* Title */}
-      <div class="body-spacing">
-        <h2 class="page-header">Compare Credit Cards</h2>
+      <div className="content-area">
+        <h2 className="text-3xl font-bold mb-8">Compare Cards</h2>
 
-        <div class="flex justify-between">
-          {/* First Card */}
-          <div class="flex flex-col gap-4">
-            <h3 class="text-xl font-semibold">Card One</h3>
+        <div className="grid grid-cols-2 gap-8 mb-8">
+          {/* Card One Selection */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-medium text-text-muted">Card One</h3>
             <Select
               onValueChange={(id) => {
                 const card = cards.find((c) => c.id === parseInt(id));
                 setCardOne(card);
               }}
             >
-              <SelectTrigger
-                onChange={(e) => {
-                  const id = e.target.value;
-                  const card = cards.find((c) => c.id === parseInt(id));
-                  setCardOne(card);
-                }}
-              >
-                <SelectValue placeholder="Choose Card One" />
+              <SelectTrigger className="w-full bg-surface border-slate-700">
+                <SelectValue placeholder="Select a card" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-surface border-slate-700 text-text-main">
                 {cards.map((card) => (
-                  <SelectItem key={card.id} value={card.id}>
+                  <SelectItem key={card.id} value={card.id.toString()} className="focus:bg-primary/20 focus:text-primary cursor-pointer">
                     {card.name}
                   </SelectItem>
                 ))}
@@ -61,39 +53,39 @@ const Compare = () => {
             </Select>
           </div>
 
-          {/* Second Card */}
-          <div class="flex flex-col gap-4 text-end">
-            <h3 class="text-xl font-semibold">Card Two</h3>
-            <Select
-              onValueChange={(id) => {
-                const card = cards.find((c) => c.id === parseInt(id));
-                setCardTwo(card);
-              }}
-            >
-              <SelectTrigger
-                onChange={(e) => {
-                  const id = e.target.value;
-                  const card = cards.find((c) => c.id === parseInt(id));
-                  setCardTwo(card);
+          {/* Card Two Selection */}
+          <div className="space-y-4 text-right">
+            <h3 className="text-xl font-medium text-text-muted">Card Two</h3>
+             <div className="flex justify-end">
+                <Select
+                onValueChange={(id) => {
+                    const card = cards.find((c) => c.id === parseInt(id));
+                    setCardTwo(card);
                 }}
-              >
-                <SelectValue placeholder="Choose Card Two" />
-              </SelectTrigger>
-              <SelectContent>
-                {cards.map((card) => (
-                  <SelectItem key={card.id} value={card.id}>
-                    {card.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+                >
+                <SelectTrigger className="w-full bg-surface border-slate-700">
+                    <SelectValue placeholder="Select a card" />
+                </SelectTrigger>
+                <SelectContent className="bg-surface border-slate-700 text-text-main">
+                    {cards.map((card) => (
+                    <SelectItem key={card.id} value={card.id.toString()} className="focus:bg-primary/20 focus:text-primary cursor-pointer">
+                        {card.name}
+                    </SelectItem>
+                    ))}
+                </SelectContent>
+                </Select>
+            </div>
           </div>
         </div>
 
-        {cardOne && cardTwo && (
-          <div class="flex flex-1 flex-col">
-            <CardDetails cardOne={cardOne} cardTwo={cardTwo} />
-          </div>
+        {cardOne && cardTwo ? (
+            <div className="mt-8">
+               <CardDetails cardOne={cardOne} cardTwo={cardTwo} />
+            </div>
+        ) : (
+             <div className="flex flex-col items-center justify-center p-20 text-text-muted opacity-50 border-2 border-dashed border-slate-700 rounded-2xl">
+                 <p className="text-lg">Select two cards to verify benefits</p>
+             </div>
         )}
       </div>
     </div>
