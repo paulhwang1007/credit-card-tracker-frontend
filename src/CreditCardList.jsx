@@ -48,6 +48,18 @@ const CreditCardList = () => {
       });
   };
 
+  const getGradient = (id) => {
+    const gradients = [
+      "from-slate-700 to-slate-900",
+      "from-blue-900 to-slate-900",
+      "from-indigo-900 to-slate-900",
+      "from-teal-900 to-slate-900",
+      "from-rose-900 to-slate-900",
+      "from-violet-900 to-slate-900",
+    ];
+    return gradients[id % gradients.length];
+  };
+
   if (loading) return (
     <div className="flex items-center justify-center p-12">
         <div className="animate-pulse text-primary font-medium">Loading Wallet...</div>
@@ -61,7 +73,7 @@ const CreditCardList = () => {
           <div key={card.id} className="relative group perspective-1000">
              {/* Card Visual */}
             <Link to={`/${card.id}`}>
-                <div className="h-56 w-full rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 border border-slate-600/50 p-6 flex flex-col justify-between shadow-xl transition-transform transform group-hover:-translate-y-2 group-hover:shadow-2xl relative overflow-hidden">
+                <div className={`h-56 w-full rounded-2xl bg-gradient-to-br ${getGradient(card.id)} border border-slate-600/50 p-6 flex flex-col justify-between shadow-xl transition-transform transform group-hover:-translate-y-2 group-hover:shadow-2xl relative overflow-hidden`}>
                     {/* Decorative Shine */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
                     

@@ -20,6 +20,18 @@ const CreditCard = () => {
       .catch((error) => console.error("Error fetching card info: " + error));
   }, [id]);
 
+  const getGradient = (id) => {
+    const gradients = [
+      "from-slate-700 to-slate-900",
+      "from-blue-900 to-slate-900",
+      "from-indigo-900 to-slate-900",
+      "from-teal-900 to-slate-900",
+      "from-rose-900 to-slate-900",
+      "from-violet-900 to-slate-900",
+    ];
+    return gradients[id % gradients.length];
+  };
+
   if (!card) return (
     <div className="flex h-screen items-center justify-center bg-background text-primary">
        Loading...
@@ -49,7 +61,7 @@ const CreditCard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
              {/* Left Column: Visual Representation (Mock) */}
              <div className="col-span-1">
-                <div className="h-56 w-full rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 border border-slate-600/50 p-6 flex flex-col justify-between shadow-xl relative overflow-hidden">
+                <div className={`h-56 w-full rounded-2xl bg-gradient-to-br ${getGradient(parseInt(id))} border border-slate-600/50 p-6 flex flex-col justify-between shadow-xl relative overflow-hidden`}>
                      {/* Decorative Shine */}
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
                     <div className="flex justify-between items-start z-10">
