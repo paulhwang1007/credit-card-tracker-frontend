@@ -25,11 +25,9 @@ const Sidebar = () => {
     <div className="flex flex-col w-64 h-screen border-r border-slate-700/50 bg-background flex-shrink-0 sticky top-0">
       {/* Logo */}
       <div className="p-8 pb-4">
-        <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="font-bold text-background text-lg">P</span>
-            </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white">PERK</h1>
+        <div className="flex items-center gap-3">
+            <img src="/src/assets/perk_icon.png" alt="Perk Logo" className="w-10 h-10" />
+            <h1 className="text-2xl font-bold tracking-tight text-white">PERK</h1>
         </div>
       </div>
 
